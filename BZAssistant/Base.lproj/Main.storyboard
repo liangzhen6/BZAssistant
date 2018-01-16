@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1114" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -183,6 +184,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lP-5m-J95">
+                                <rect key="frame" x="87.5" y="30" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="BcQ-1v-7gy"/>
+                                    <constraint firstAttribute="height" constant="30" id="tWC-7b-giG"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nameBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0rB-qp-UpZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -193,12 +207,15 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="T8y-kM-Bzb" secondAttribute="bottom" constant="10" id="bBq-hB-gqR"/>
                             <constraint firstItem="3k4-se-Tli" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cps-6E-mi1"/>
                             <constraint firstItem="3k4-se-Tli" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="64" id="rb7-gt-5If"/>
+                            <constraint firstItem="6lP-5m-J95" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rvj-qR-h92"/>
+                            <constraint firstItem="6lP-5m-J95" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="xCT-dd-99A"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actionBtn" destination="756-tZ-UMg" id="aLa-3I-P8h"/>
                         <outlet property="max" destination="HgH-KQ-4e4" id="2b7-h4-5u4"/>
                         <outlet property="min" destination="Y3R-ri-KSa" id="obw-LI-uL2"/>
+                        <outlet property="nameBtn" destination="6lP-5m-J95" id="tSL-ol-IZM"/>
                         <outlet property="refreshTime" destination="Eme-Ej-sn0" id="fAg-lg-X1K"/>
                         <outlet property="textView" destination="T8y-kM-Bzb" id="iW0-m3-PBo"/>
                         <outlet property="type" destination="e8R-3m-N9G" id="66U-66-lUv"/>

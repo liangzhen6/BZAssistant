@@ -10,7 +10,7 @@
 #import "HttpRequest.h"
 #import <SVProgressHUD.h>
 #import "BZnotification.h"
-
+#import "StartView.h"
 @interface ViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *type;
 @property (weak, nonatomic) IBOutlet UITextField *refreshTime;
@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *max;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *actionBtn;
+@property (weak, nonatomic) IBOutlet UIButton *nameBtn;
 
 @property(nonatomic,assign)NSInteger refreshTimeNum;
 @property(nonatomic,assign)float minNum;
@@ -34,7 +35,17 @@
     [self setDelegate];
     [self initData];
     [self initTimer];
+    [self addnotification];
+    [[StartView shareStartView] chickUserLogin];
+
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)addnotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notification:) name:@"login" object:nil];
+}
+- (void)notification:(NSNotification *)notifi {
+    [_nameBtn setTitle:notifi.userInfo[@"usename"] forState:UIControlStateNormal];
 }
 
 - (void)setDelegate {
@@ -347,6 +358,23 @@
     [SVProgressHUD showErrorWithStatus:@"数据填写错误"];
     [SVProgressHUD dismissWithDelay:2.0];
 }
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"login" object:nil];
+}
+- (IBAction)nameBtnAction:(UIButton *)sender {
+    if ([[StartView shareStartView] userMessage]) {
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"警告" message:@"是否退出登录？" preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction * actiony = [UIAlertAction actionWithTitle:@"是的" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [[StartView shareStartView] deleteUser];
+        }];
+        UIAlertAction * actionn = [UIAlertAction actionWithTitle:@"闹着玩呢" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:actiony];
+        [alert addAction:actionn];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

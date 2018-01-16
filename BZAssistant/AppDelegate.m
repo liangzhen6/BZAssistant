@@ -8,9 +8,11 @@
 
 #import "AppDelegate.h"
 #import <UserNotifications/UserNotifications.h>
-#import "BZlocation.h"
+//#import "BZlocation.h"
 #import "HttpRequest.h"
 #import "ViewController.h"
+#import "MPPush.h"
+#import "StartView.h"
 #define IOS_VERSION      [[[UIDevice currentDevice] systemVersion] floatValue]
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
@@ -23,33 +25,61 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-//    [[BZlocation shareBZlocation] startLocation];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [[BZlocation shareBZlocation] stopLocation];
-//    });
-    //设置后台刷新
-//    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    if (IOS_VERSION >= 10.0) {
-        UNUserNotificationCenter * center = [UNUserNotificationCenter currentNotificationCenter];
-        [center setDelegate:self];
-        UNAuthorizationOptions type = UNAuthorizationOptionBadge|UNAuthorizationOptionSound|UNAuthorizationOptionAlert;
-        [center requestAuthorizationWithOptions:type completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            if (granted) {
-                NSLog(@"注册成功");
-            }else{
-                NSLog(@"注册失败");
-            }
-        }];
- 
-    } else {
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    }
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-
+    [self initPushNotification];
     return YES;
 }
+
+#pragma mark ========== handle Push start ===========
+- (void)initPushNotification {
+    //fcm的验证
+    [[MPPush shareMPPush] configure];
+    
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_9_x_Max) {
+        UIUserNotificationType allNotificationTypes =
+        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    } else {
+        // iOS 10 or later
+#if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+        // For iOS 10 display notification (sent via APNS)
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        UNAuthorizationOptions authOptions =
+        UNAuthorizationOptionAlert
+        | UNAuthorizationOptionSound
+        | UNAuthorizationOptionBadge;
+        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:authOptions completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            
+        }];
+#endif
+    }
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[MPPush shareMPPush] setAPNSToken:deviceToken];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    completionHandler(UNNotificationPresentationOptionBadge|
+                      UNNotificationPresentationOptionSound|
+                      UNNotificationPresentationOptionAlert);
+}
+//ios10 的处理
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    
+    completionHandler();
+}
+// ios 8 以上的处理
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler {
+ 
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+
+
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     ViewController * viewCon = (ViewController *)self.window.rootViewController;
@@ -77,28 +107,22 @@
 
 }
 
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
-    
-    completionHandler();
-}
-//- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
-//    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
-//}
-
-
 -(void)comeToBackgroundMode {
-    ViewController * viewCon = (ViewController *)self.window.rootViewController;
-    [viewCon backgroundRefresh];
-    //初始化一个后台任务BackgroundTask，这个后台任务的作用就是告诉系统当前app在后台有任务处理，需要时间
-//    UIApplication*  app = [UIApplication sharedApplication];
-//    NSLog(@"%f",[UIApplication sharedApplication].backgroundTimeRemaining);
+//    ViewController * viewCon = (ViewController *)self.window.rootViewController;
+//    [viewCon backgroundRefresh];
+//    初始化一个后台任务BackgroundTask，这个后台任务的作用就是告诉系统当前app在后台有任务处理，需要时间
+    UIApplication*  app = [UIApplication sharedApplication];
+    NSLog(@"%f",[UIApplication sharedApplication].backgroundTimeRemaining);
 //
-//    if ([UIApplication sharedApplication].backgroundTimeRemaining < 5) {
-//        [app endBackgroundTask:self.bgTask];
-//        self.bgTask = [app beginBackgroundTaskWithExpirationHandler:nil];
-//        ViewController * viewCon = (ViewController *)self.window.rootViewController;
-//        [viewCon backgroundRefresh];
-//    }
+    if ([UIApplication sharedApplication].backgroundTimeRemaining < 5 || self.bgTask != UIBackgroundTaskInvalid) {
+        if (self.bgTask != UIBackgroundTaskInvalid) {
+            [app endBackgroundTask:self.bgTask];
+            self.bgTask = UIBackgroundTaskInvalid;
+        }
+        self.bgTask = [app beginBackgroundTaskWithExpirationHandler:nil];
+        ViewController * viewCon = (ViewController *)self.window.rootViewController;
+        [viewCon backgroundRefresh];
+    }
     
     
     
@@ -155,12 +179,12 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    self.bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
+//    self.bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
 
-    __weak typeof (self)ws = self;
-    [[BZlocation shareBZlocation] startLocation:^{
-        [ws comeToBackgroundMode];
-    }];
+//    __weak typeof (self)ws = self;
+//    [[BZlocation shareBZlocation] startLocation:^{
+//        [ws comeToBackgroundMode];
+//    }];
 //    [self comeToBackgroundMode];
 //    ViewController * viewCon = (ViewController *)self.window.rootViewController;
 //    [viewCon cancleTime];
@@ -180,7 +204,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    [[BZlocation shareBZlocation] stopLocation];
+//    [[BZlocation shareBZlocation] stopLocation];
 //    ViewController * viewCon = (ViewController *)self.window.rootViewController;
 //    [viewCon backgroundRefresh];
 //    [[BZlocation shareBZlocation] stopLocation];

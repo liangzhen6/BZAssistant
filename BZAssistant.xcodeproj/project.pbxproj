@@ -23,6 +23,17 @@
 		AC34254E27FE603DA0D3E3E1 /* libPods-BZAssistantTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3310AB1C2E1C184D8F1D01D /* libPods-BZAssistantTests.a */; };
 		CEB0C93BA5C903B2A2B3AACB /* libPods-BZAssistantUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E43EDDD165510F1A6CEA9415 /* libPods-BZAssistantUITests.a */; };
 		D2A4A8A10880823AFF7C85B5 /* libPods-BZAssistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73281B9C7AC61AE436B426FB /* libPods-BZAssistant.a */; };
+		FA19FA7D200DD45B0054C44C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA19FA7C200DD45B0054C44C /* GoogleService-Info.plist */; };
+		FA19FAA1200DD87F0054C44C /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19FA97200DD87F0054C44C /* FirebaseCore.framework */; };
+		FA19FAA2200DD87F0054C44C /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19FA98200DD87F0054C44C /* FirebaseAnalytics.framework */; };
+		FA19FAA3200DD87F0054C44C /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19FA9A200DD87F0054C44C /* FirebaseMessaging.framework */; };
+		FA19FAA4200DD87F0054C44C /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19FA9B200DD87F0054C44C /* GoogleSymbolUtilities.framework */; };
+		FA19FAA5200DD87F0054C44C /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19FA9D200DD87F0054C44C /* GoogleToolboxForMac.framework */; };
+		FA19FAA6200DD87F0054C44C /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19FA9E200DD87F0054C44C /* GoogleInterchangeUtilities.framework */; };
+		FA19FAA7200DD87F0054C44C /* MPPush.m in Sources */ = {isa = PBXBuildFile; fileRef = FA19FA9F200DD87F0054C44C /* MPPush.m */; };
+		FA19FAA8200DD87F0054C44C /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19FAA0200DD87F0054C44C /* FirebaseInstanceID.framework */; };
+		FA19FAAB200E04A20054C44C /* StartView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA19FAAA200E04A20054C44C /* StartView.m */; };
+		FA19FAAD200E04AD0054C44C /* StartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA19FAAC200E04AD0054C44C /* StartView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +88,20 @@
 		A6925A1AF0BD2D4B309A66EA /* Pods-BZAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BZAssistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BZAssistant/Pods-BZAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		DCB4296C059C8A2A6A1FAD38 /* Pods-BZAssistantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BZAssistantUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BZAssistantUITests/Pods-BZAssistantUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E43EDDD165510F1A6CEA9415 /* libPods-BZAssistantUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BZAssistantUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA19FA7C200DD45B0054C44C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA19FA97200DD87F0054C44C /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
+		FA19FA98200DD87F0054C44C /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		FA19FA99200DD87F0054C44C /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		FA19FA9A200DD87F0054C44C /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = "<group>"; };
+		FA19FA9B200DD87F0054C44C /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		FA19FA9C200DD87F0054C44C /* MPPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPush.h; sourceTree = "<group>"; };
+		FA19FA9D200DD87F0054C44C /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		FA19FA9E200DD87F0054C44C /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		FA19FA9F200DD87F0054C44C /* MPPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPush.m; sourceTree = "<group>"; };
+		FA19FAA0200DD87F0054C44C /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		FA19FAA9200E04A20054C44C /* StartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartView.h; sourceTree = "<group>"; };
+		FA19FAAA200E04A20054C44C /* StartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartView.m; sourceTree = "<group>"; };
+		FA19FAAC200E04AD0054C44C /* StartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +109,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA19FAA5200DD87F0054C44C /* GoogleToolboxForMac.framework in Frameworks */,
+				FA19FAA6200DD87F0054C44C /* GoogleInterchangeUtilities.framework in Frameworks */,
+				FA19FAA4200DD87F0054C44C /* GoogleSymbolUtilities.framework in Frameworks */,
+				FA19FAA2200DD87F0054C44C /* FirebaseAnalytics.framework in Frameworks */,
+				FA19FAA8200DD87F0054C44C /* FirebaseInstanceID.framework in Frameworks */,
+				FA19FAA3200DD87F0054C44C /* FirebaseMessaging.framework in Frameworks */,
 				320E8CEB1FEE6D9B005F9C66 /* UserNotifications.framework in Frameworks */,
 				D2A4A8A10880823AFF7C85B5 /* libPods-BZAssistant.a in Frameworks */,
+				FA19FAA1200DD87F0054C44C /* FirebaseCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +166,12 @@
 			isa = PBXGroup;
 			children = (
 				320E8CE91FEE61BE005F9C66 /* BZAssistant.entitlements */,
+				FA19FA95200DD5EB0054C44C /* Library */,
 				320E8CB31FEE0CD1005F9C66 /* AppDelegate.h */,
 				320E8CB41FEE0CD1005F9C66 /* AppDelegate.m */,
+				FA19FAA9200E04A20054C44C /* StartView.h */,
+				FA19FAAA200E04A20054C44C /* StartView.m */,
+				FA19FAAC200E04AD0054C44C /* StartView.xib */,
 				320E8CE31FEE1B20005F9C66 /* HttpRequest.h */,
 				320E8CE41FEE1B20005F9C66 /* HttpRequest.m */,
 				320E8CB61FEE0CD1005F9C66 /* ViewController.h */,
@@ -202,6 +238,32 @@
 				E43EDDD165510F1A6CEA9415 /* libPods-BZAssistantUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA19FA95200DD5EB0054C44C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				FA19FA96200DD87F0054C44C /* MPPUSHSDK */,
+				FA19FA7C200DD45B0054C44C /* GoogleService-Info.plist */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		FA19FA96200DD87F0054C44C /* MPPUSHSDK */ = {
+			isa = PBXGroup;
+			children = (
+				FA19FA97200DD87F0054C44C /* FirebaseCore.framework */,
+				FA19FA98200DD87F0054C44C /* FirebaseAnalytics.framework */,
+				FA19FA99200DD87F0054C44C /* Firebase.h */,
+				FA19FA9A200DD87F0054C44C /* FirebaseMessaging.framework */,
+				FA19FA9B200DD87F0054C44C /* GoogleSymbolUtilities.framework */,
+				FA19FA9C200DD87F0054C44C /* MPPush.h */,
+				FA19FA9D200DD87F0054C44C /* GoogleToolboxForMac.framework */,
+				FA19FA9E200DD87F0054C44C /* GoogleInterchangeUtilities.framework */,
+				FA19FA9F200DD87F0054C44C /* MPPush.m */,
+				FA19FAA0200DD87F0054C44C /* FirebaseInstanceID.framework */,
+			);
+			path = MPPUSHSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,8 +392,10 @@
 			files = (
 				320E8CC01FEE0CD1005F9C66 /* LaunchScreen.storyboard in Resources */,
 				320E8CBD1FEE0CD1005F9C66 /* Assets.xcassets in Resources */,
+				FA19FA7D200DD45B0054C44C /* GoogleService-Info.plist in Resources */,
 				32D81B7D1FEEDCD10014B3C3 /* value.plist in Resources */,
 				320E8CBB1FEE0CD1005F9C66 /* Main.storyboard in Resources */,
+				FA19FAAD200E04AD0054C44C /* StartView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,13 +422,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BZAssistantTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D583FFC93ECEEDAF3374333 /* [CP] Copy Pods Resources */ = {
@@ -418,13 +485,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BZAssistant-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3B95F37A59F43663A13F8448 /* [CP] Check Pods Manifest.lock */ = {
@@ -433,13 +503,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BZAssistantUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3BA80A7D26E57680F22B5FE9 /* [CP] Copy Pods Resources */ = {
@@ -448,9 +521,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BZAssistant/Pods-BZAssistant-resources.sh",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -494,12 +570,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA19FAA7200DD87F0054C44C /* MPPush.m in Sources */,
 				320E8CB81FEE0CD1005F9C66 /* ViewController.m in Sources */,
 				320E8CE51FEE1B20005F9C66 /* HttpRequest.m in Sources */,
 				320E8CEE1FEE76A4005F9C66 /* BZlocation.m in Sources */,
 				320E8CE81FEE5B5E005F9C66 /* BZnotification.m in Sources */,
 				320E8CB51FEE0CD1005F9C66 /* AppDelegate.m in Sources */,
 				320E8CB21FEE0CD1005F9C66 /* main.m in Sources */,
+				FA19FAAB200E04A20054C44C /* StartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,11 +732,15 @@
 				CODE_SIGN_ENTITLEMENTS = BZAssistant/BZAssistant.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G4E6298X77;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BZAssistant/Library/MPPUSHSDK",
+				);
 				INFOPLIST_FILE = BZAssistant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mingpao.BZAssistant;
+				PRODUCT_BUNDLE_IDENTIFIER = lz.BZAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -673,11 +755,15 @@
 				CODE_SIGN_ENTITLEMENTS = BZAssistant/BZAssistant.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G4E6298X77;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BZAssistant/Library/MPPUSHSDK",
+				);
 				INFOPLIST_FILE = BZAssistant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mingpao.BZAssistant;
+				PRODUCT_BUNDLE_IDENTIFIER = lz.BZAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
